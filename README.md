@@ -1,0 +1,2 @@
+# Postman_GitHub_Integration_BookingC
+This repository contains postman collection BookingC
