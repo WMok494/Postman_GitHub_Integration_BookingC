@@ -1,0 +1,104 @@
+{
+	"info": {
+		"_postman_id": "f5ea993d-b80a-49fa-b6b7-5697f80a50dd",
+		"name": "BookingC",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "RCreateBooking",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "51b78985-8b8b-49b8-a2e6-0cc34baa7390",
+						"exec": [
+							"var jsonData = pm.response.json();\r",
+							"pm.environment.set('bookingId', jsonData.bookingid)\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "4333f103-5a44-4727-a179-4f18b7a110ab",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstname\" : \"Wai\",\r\n    \"lastname\" : \"Mok\",\r\n    \"totalprice\" : 111,\r\n    \"depositpaid\" : true,\r\n    \"bookingdates\" : {\r\n        \"checkin\" : \"2023-06-03\",\r\n        \"checkout\" : \"2023-06-05\"\r\n    },\r\n    \"additionalneeds\" : \"Breakfast\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://restful-booker.herokuapp.com/booking",
+				"description": "Get a booking id from the Create Booking API"
+			},
+			"response": []
+		},
+		{
+			"name": "RGetBooking",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d808d19d-c017-4e46-a17e-bd2200a7e8c1",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "90bd27f0-7e91-4eff-bfd1-0465029d0ee3",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "https://restful-booker.herokuapp.com/booking/{{bookingId}}",
+				"description": "Get booking details from the Get Booking API"
+			},
+			"response": []
+		},
+		{
+			"name": "RDeleteBooking",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "28a5fd37-62ba-4298-ae77-d93f94cea448",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "1c92e2b3-1418-46e1-bc70-994a0d759928",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "https://restful-booker.herokuapp.com/booking/{{bookingId}}",
+				"description": "Delete the booking id"
+			},
+			"response": []
+		}
+	]
+}
